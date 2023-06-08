@@ -1,0 +1,596 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'dashboard/css/index.css' %}">
+</head>
+<body>
+    <div class="mydashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="my-sidebar" id="side">
+                        <nav class="navbar">
+                            <h4 class="navbar-brand" style="color: rgb(255, 255, 255)">AgriTrack</h4>
+                        </nav>
+                        <hr>
+                        <ul>
+                            <li class="mt-2"><a href="{% url 'home' %}"><i class="fa fa-home"> </i> Home</a></li>
+                            <li class="mt-2"><a href="{% url 'notes' %}"><i class="fa fa-file-text-o" aria-hidden="true"> </i> Notes</a></li>
+                            <li class="mt-2"><a href="{% url 'home' %}#footer"> <i class="fa fa-question-circle" aria-hidden="true"> </i> Help</a></li>
+                            <hr>
+                            <li><a href=""><i class="fa fa-cog" aria-hidden="true"> </i> Settings</a></li>
+                            <hr>
+                            <li><a href="" id="toggle-btn"><i class="fa fa-comments-o" aria-hidden="true"> </i> Messages</a></li>
+                        </ul>
+                        <div class="messages" id="messages">
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="n-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="p-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="k-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="pH-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="ec-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="m-message"></p>
+                            <p style="color: rgb(255, 255, 255); padding: 0px 20px; font-size: 12px;" id="t-message"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="my-main-content">
+                        <nav class="navbar">
+                            <button class="d-block d-sm-block d-lg-none d-md-none btn btn-md" id="open" onclick="myFunction()">Open</button>
+                            <a class="navbar-brand" href="dashboard.html"><i class="fa fa-tachometer fa-2x" aria-hidden="true"> </i> Dashboard</a>
+                            <div class="profile-info ml-auto">
+                                <div class="my-profile-pic">
+                                    <img src="" alt="profile pic">
+                                </div>
+                                <a href="">
+                                    <div class="my-name">
+                                        <h5>{{ request.user.username }}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </nav>
+                        <div class="charts">
+                            <div class="main-graphs">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="nitrogen"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Nitrogen <span id="nitro-content"></span></h6>
+                                                <p>Nitrogen promotes vegetative growth, leaf development, and overall plant vigor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="phosphorus"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Phosphorus <span id="phospho-content"></span></h6>
+                                                <p>Phosphorus stimulates root growth, flowering, and fruiting.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="potassium"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Potassium <span id="potas-content"></span></h6>
+                                                <p>Potassium regulates water balance, enhances fruit quality, and increases disease resistance.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="pH"></canvas>
+                                            <div class="info p-2">
+                                                <h6>pH <span id="pH-content"></span></h6>
+                                                <p>pH affects the availability of nutrients in the soil and influences plant growth.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="ec"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Electrical Conductivity <span id="ec-content"></span></h6>
+                                                <p>EC measures the concentration of soluble salts in the soil, indicating nutrient availability and potential toxicity.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="moisture"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Moisture <span id="moist-content"></span></h6>
+                                                <p>Influences nutrient uptake, root growth, and photosynthesis, and is crucial for plant survival and productivity.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="mychart1 mt-3 mb-3" id="mychart1">
+                                            <canvas id="temperature"></canvas>
+                                            <div class="info p-2">
+                                                <h6>Temperature <span id="temp-content"></span></h6>
+                                                <p>affects plant metabolism, growth rate, and reproductive development, and influences the timing and success of planting and harvesting</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+      var endpoint1 = 'api/nutrients/'
+      var nitrogenData = []
+      var phosphorusData = []
+      var potassiumData = []
+      var pHData = []
+      var ecData = []
+      var moistureData = []
+      var temperatureData = []
+      var labels = []
+
+    // Nitrogen
+      setInterval(function(){
+        $.ajax({
+            method: "GET",
+            url: endpoint1,
+            success: function(data){
+                nitrogenData = data.nutrients[0].nitrogen;
+                document.getElementById('nitro-content').innerHTML = "(" +nitrogenData+"%" +")";
+                var n_message = document.getElementById('n-message');
+                if (nitrogenData >= 30 && nitrogenData <= 45){
+                    n_message.innerHTML = "Nitrogen content normal"
+                }
+                else {
+                    n_message.innerHTML = "Nitrogen not enough, make sure you apply some"
+                }
+
+                var data = {
+                labels:[0],
+                datasets: [
+                    {
+                        label: 'Nirogen',
+                        data: [0],
+                        borderColor: 'rgb(0, 255, 0)',
+                        borderWidth: 1,
+                        lineTension: 0.5,
+                    }
+                ]
+            };
+            var config = {
+                type: 'line',
+                data: data,
+            };
+
+
+            var nitrogen = new Chart(
+                document.getElementById('nitrogen'),
+                config
+
+            );
+            
+            window.setInterval(myCallback, 5000);
+
+            function myCallback(){
+                var now = new Date();
+                now = now.getHours() + ":" + now.getMinutes();
+
+                if( data.datasets[0].data.length >= 20){
+                    console.log(data.datasets[0].data.length);
+                    data.labels.shift();
+                    data.datasets[0].data.shift();
+                }
+                data.labels.push(now);
+                data.datasets[0].data.push(nitrogenData);
+
+                nitrogen.update();
+                
+            }
+            },
+        });
+}, 5000);
+
+// Phosphorus
+setInterval(function(){
+        $.ajax({
+        method: "GET",
+        url: endpoint1,
+        success: function(data){
+            phosphorusData = data.nutrients[0].phosphorus;
+            document.getElementById('phospho-content').innerHTML = "(" +phosphorusData+"%"+ ")";
+            var p_message = document.getElementById('p-message');
+            if (phosphorusData >= 20 && phosphorusData <= 30){
+                p_message.innerHTML = "Phosphorus content normal"
+            }
+            else {
+                p_message.innerHTML = "Apply phosphorus fertlizer"
+            }
+
+            var data = {
+            labels:[0],
+            datasets: [
+                {
+                    label: 'Phosphorus',
+                    data: [0],
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderWidth: 0.5,
+                    lineTension: 0.5,
+                }
+            ]
+        };
+        var config = {
+            type: 'line',
+            data: data,
+        };
+
+
+        var phosphorus = new Chart(
+            document.getElementById('phosphorus'),
+            config
+
+        );
+        
+        window.setInterval(myCallback, 5000);
+
+        function myCallback(){
+            var now = new Date();
+            now = now.getHours() + ":" + now.getMinutes();
+
+            if( data.datasets[0].data.length >= 20){
+                console.log(data.datasets[0].data.length);
+                data.labels.shift();
+                data.datasets[0].data.shift();
+            }
+            data.labels.push(now);
+            data.datasets[0].data.push(phosphorusData);
+
+            phosphorus.update();
+            
+        }
+        },
+    });
+
+}, 5000);
+
+// Potasium
+setInterval(function(){
+        $.ajax({
+        method: "GET",
+        url: endpoint1,
+        success: function(data){
+            potassiumData = data.nutrients[0].potassiun;
+            document.getElementById('potas-content').innerHTML = "(" +potassiumData+"%"+ ")";
+            var k_messgae = document.getElementById('k-message');
+            if (potassiumData >= 50 && potassiumData  <= 75){
+                k_messgae.innerHTML = "Normal potassium content"
+            }
+            else{
+                k_messgae.innerHTML = "Potassium below normal"
+            }
+
+            var data = {
+            labels:[0],
+            datasets: [
+                {
+                    label: 'Potassium',
+                    data: [0],
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderWidth: 1,
+                    lineTension: 0.5,
+                }
+            ]
+        };
+        var config = {
+            type: 'line',
+            data: data,
+        };
+
+
+        var potassium = new Chart(
+            document.getElementById('potassium'),
+            config
+
+        );
+        
+        window.setInterval(myCallback, 5000);
+
+        function myCallback(){
+            var now = new Date();
+            now = now.getHours() + ":" + now.getMinutes();
+
+            if( data.datasets[0].data.length >= 20){
+                console.log(data.datasets[0].data.length);
+                data.labels.shift();
+                data.datasets[0].data.shift();
+            }
+            data.labels.push(now);
+            data.datasets[0].data.push(potassiumData);
+
+            potassium.update();
+            
+        }
+        },
+    });
+
+}, 5000);
+
+// pH
+setInterval(function(){
+        $.ajax({
+            method: "GET",
+            url: endpoint1,
+            success: function(data){
+                pHData = data.nutrients[0].pH;
+                document.getElementById('pH-content').innerHTML = "(" +pHData+"%"+ ")";
+                var message_box = document.getElementById('pH-message');
+                
+                if (pHData < 7){
+                    message_box.innerHTML = "pH: "+ pHData+ " The pH is too low, land very acidic";
+                }
+                else if (pHData > 7){
+                    message_box.innerHTML = "pH: "+ pHData+ " pH too high, land not healthy";
+                }
+                else {
+                    message_box.innerHTML = "pH: "+ pHData+ "Normal";
+                }
+
+                console.log(pHData);
+
+                var data = {
+                labels:[0],
+                datasets: [
+                    {
+                        label: 'pH',
+                        data: [0],
+                        borderColor: 'rgb(0, 255, 0)',
+                        borderWidth: 1,
+                        lineTension: 0.5,
+                    }
+                ]
+            };
+            var config = {
+                type: 'line',
+                data: data,
+            };
+
+
+            var pH = new Chart(
+                document.getElementById('pH'),
+                config
+
+            );
+            
+            window.setInterval(myCallback, 5000);
+
+            function myCallback(){
+                var now = new Date();
+                now = now.getHours() + ":" + now.getMinutes();
+
+                if( data.datasets[0].data.length >= 20){
+                    console.log(data.datasets[0].data.length);
+                    data.labels.shift();
+                    data.datasets[0].data.shift();
+                }
+                data.labels.push(now);
+                data.datasets[0].data.push(pHData);
+
+                pH.update();
+                
+            }
+            },
+        });
+}, 5000);
+
+// EC
+setInterval(function(){
+        $.ajax({
+        method: "GET",
+        url: endpoint1,
+        success: function(data){
+            ecData = data.nutrients[0].ec;
+            document.getElementById('ec-content').innerHTML = "(" +ecData+"%"+ ")";
+            var ec_message = document.getElementById('ec-message');
+            if (ecData >= 20 && ecData <= 20){
+                ec_message.innerHTML = "Normal levels of ec";
+            }
+            else {
+                ec_message.innerHTML = "EC too low! Not good for crop growth";
+            }
+
+            var data = {
+            labels:[0],
+            datasets: [
+                {
+                    label: 'Electrical Conductivity',
+                    data: [0],
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderWidth: 1,
+                    lineTension: 0.5,
+                }
+            ]
+        };
+        var config = {
+            type: 'line',
+            data: data,
+        };
+
+
+        var ec = new Chart(
+            document.getElementById('ec'),
+            config
+
+        );
+        
+        window.setInterval(myCallback, 5000);
+
+        function myCallback(){
+            var now = new Date();
+            now = now.getHours() + ":" + now.getMinutes();
+
+            if( data.datasets[0].data.length >= 20){
+                console.log(data.datasets[0].data.length);
+                data.labels.shift();
+                data.datasets[0].data.shift();
+            }
+            data.labels.push(now);
+            data.datasets[0].data.push(ecData);
+
+            ec.update();
+            
+        }
+        },
+    });
+
+}, 5000);
+
+// Moisture
+setInterval(function(){
+        $.ajax({
+        method: "GET",
+        url: endpoint1,
+        success: function(data){
+            moistureData = data.nutrients[0].moisture;
+            document.getElementById('moist-content').innerHTML = "(" +moistureData+"%"+ ")";
+            var m_message = document.getElementById('m-message');
+            if (moistureData >= 20 && moistureData <= 20){
+                m_message.innerHTML = "Normal levels of moisture";
+            }
+            else {
+                m_message.innerHTML = "The land is too dry, water it soon!";
+            }
+
+            var data = {
+            labels:[0],
+            datasets: [
+                {
+                    label: 'Moisture',
+                    data: [0],
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderWidth: 1,
+                    lineTension: 0.5,
+                }
+            ]
+        };
+        var config = {
+            type: 'line',
+            data: data,
+        };
+
+
+        var moisture = new Chart(
+            document.getElementById('moisture'),
+            config
+
+        );
+        
+        window.setInterval(myCallback, 5000);
+
+        function myCallback(){
+            var now = new Date();
+            now = now.getHours() + ":" + now.getMinutes();
+
+            if( data.datasets[0].data.length >= 20){
+                console.log(data.datasets[0].data.length);
+                data.labels.shift();
+                data.datasets[0].data.shift();
+            }
+            data.labels.push(now);
+            data.datasets[0].data.push(moistureData);
+
+            moisture.update();
+            
+        }
+        },
+    });
+
+}, 5000);
+
+// temperature
+setInterval(function(){
+        $.ajax({
+        method: "GET",
+        url: endpoint1,
+        success: function(data){
+            temperatureData = data.nutrients[0].temperature;
+            document.getElementById('temp-content').innerHTML = "(" +temperatureData+"%"+ ")";
+            var t_message = document.getElementById('t-message');
+            if (temperatureData >= 20 && temperatureData <= 30){
+                t_message.innerHTML = "Normal temperature";
+            }
+            else {
+                t_message.innerHTML = "Its too cold, the plants wont survive this weather!";
+            }
+            var data = {
+            labels:[0],
+            datasets: [
+                {
+                    label: 'Temperature',
+                    data: [0],
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderWidth: 1,
+                    lineTension: 0.5,
+                }
+            ]
+        };
+        var config = {
+            type: 'line',
+            data: data,
+        };
+
+
+        var temperature = new Chart(
+            document.getElementById('temperature'),
+            config
+
+        );
+        
+        window.setInterval(myCallback, 5000);
+
+        function myCallback(){
+            var now = new Date();
+            now = now.getHours() + ":" + now.getMinutes();
+
+            if( data.datasets[0].data.length >= 20){
+                console.log(data.datasets[0].data.length);
+                data.labels.shift();
+                data.datasets[0].data.shift();
+            }
+            data.labels.push(now);
+            data.datasets[0].data.push(temperatureData);
+
+            temperature.update();
+            
+        }
+        },
+    });
+
+}, 5000);
+    
+</script>
+     
+</body>
+</html>

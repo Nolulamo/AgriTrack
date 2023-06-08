@@ -1,0 +1,936 @@
+$p-lg-font-size: 1.5vw;
+$p-sm-font-size: 2.5vw;
+$h1-lg-font-size: 2.8vw;
+$h1-sm-font-size: 3.8vw;
+$h4-lg-font-size: 2.5vw;
+$h4-sm-font-size: 3.5vw;
+$green-color: rgb(1, 34, 1);
+$red-color: rgb(173, 6, 6);
+$white-color: rgb(255, 255, 255);
+$black-color: rgb(0, 0, 0);
+$box-shadow: 2px 2px 5px black;
+
+
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(173, 6, 6, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    
+}
+.navbar-toggler {
+    border-color: rgb(173, 6, 6);
+    padding: 2px 10px;
+    margin-top: 1px;
+} 
+// SMALL DEVICES
+
+// NAVBAR
+.mynavbar{
+    width: 100%;
+    height: 50px;
+    background-color: $green-color;
+    .container-fluid{
+        nav{
+            .navbar-brand{
+                color: $white-color;
+                font-size: $h1-sm-font-size;
+                font-weight: bold;
+            }
+        }
+    }
+    #navbarNav{
+        background-color: $green-color;
+        padding: 15px;
+        ul{
+            li{
+                a{
+                    color: $white-color;
+                    font-size: $p-sm-font-size;
+                    font-weight: 250;
+                }
+            }
+        }
+    }
+}
+// HOME
+#home-section{
+    .home-image{
+        width: 100%;
+        height: 400px;
+        background-image: url("../images/tomatoes.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        .container-fluid{
+            .home-content{
+                position: relative;
+                top: 100px;
+                h1{
+                    color: $white-color;
+                    font-size: $h1-sm-font-size;
+                    font-weight: bold;
+                }
+                .login-buttons{
+                    margin: 5px auto;
+                    a{
+                        display: inline-block;
+                        padding: 5px 15px;
+                        background-color: $red-color;
+                        color: $white-color;
+                        border-radius: 15px;
+                        font-size: $p-sm-font-size;
+                        font-weight: 250;
+                        transition: 0.5s;
+                        &:hover{
+                            color: $green-color;
+                            transform: scale(1.1);
+                            box-shadow: 2px 2px 5px $red-color;
+                            margin: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ABOUT
+#about-us{
+    .container-fluid{
+        h4{
+            color: $green-color;
+            font-size: $h4-sm-font-size;
+            font-weight: bold;
+        }
+        p{
+            font-size: $p-sm-font-size;
+            font-weight: 250;
+        }
+    }
+}
+
+// REGISTER
+.myform{
+    width: 80%;
+    position: relative;
+    left: 10%;
+    top: 50px;
+    padding: 15px;
+    border-radius: 2%;
+    background-color: $green-color;
+    form{
+        .form-group{
+            margin: 5px;
+            position: relative;
+            i{
+                position: absolute;
+                top: 25%;
+                left: 3px;
+                color: $white-color;
+            }
+            p{
+                color: $white-color;
+                a{
+                    color: $red-color;
+                    font-weight: bold;
+                }
+            }
+            input[type=text], input[type=password], input[type=email]{
+                background-color: transparent;
+                border-color: $white-color;
+                color: $white-color;
+                padding-left: 20px;
+                &::placeholder{
+                    color: $white-color;
+                    opacity: 0.6;
+                }
+                &:focus{
+                    box-shadow: none;
+                    border-color: $white-color;
+                    outline: none;
+                }
+            }
+            input[type=submit]{
+                background-color: transparent;
+                color: $red-color;
+                transition: 0.5s;
+                font-weight: bold;
+                width: 45%;
+                margin: 2px auto;
+                border-radius: 0;
+                &:hover{
+                    background-color: $red-color;
+                    color: $green-color;
+                    transform: scale(1.1);
+                    border-color: $red-color;
+                }
+            }
+        }
+    }
+}
+// FOOTER
+#footer{
+    footer{
+        width: 100%;
+        background-color: $green-color;
+        padding: 15px;
+        .container-fluid{
+            .row{
+                .col-sm-12{
+                    h4{
+                        color: $white-color;
+                        font-weight: 250;
+                        font-size: $h4-sm-font-size;
+                    }
+                    a{
+                        display: block;
+                        color: $white-color;
+                        font-size: $p-sm-font-size;
+                        font-weight: 250;
+                        transition: 0.5s;
+
+                        &:hover{
+                            color: $red-color;
+                            transform: scale(1.1);
+                        }
+                    }
+                    p{
+                        color: $white-color;
+                        font-size: $p-sm-font-size;
+                        font-weight: 250;
+                        i{
+                            color: $red-color;
+                            font-size: $p-sm-font-size;
+                            font-weight: 250;
+                        }
+                    }
+                    form{
+                        padding: 15px;
+
+                        input[type=email]{
+                            background-color: transparent;
+                            border-color: $red-color;
+                            color: $white-color;
+                            &::placeholder{
+                                color: $white-color;
+                            }
+                            &:focus{
+                                outline: none;
+                                border-color: $red-color;
+                                box-shadow: none;
+                            }
+                        }
+                        input[type=submit]{
+                            background-color: $red-color;
+                            color: $white-color;
+                            border: $red-color;
+                            transition: 0.5s;
+                            &:hover{
+                                border-color: $red-color;
+                                outline: none;
+                                color: $green-color;
+                                box-shadow: 2px 2px 5px $red-color;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// Dashboard
+.mydashboard{
+    .container-fluid{
+        .row{
+            .col-lg-3{
+                padding: 0;
+                margin: 0;
+                .my-sidebar{
+                    width: 100%;
+                    height: 100%;
+                    padding: 15px;
+                    background-color: $green-color;
+                    transition: max-height 0.5s ease-in-out;
+                    hr{
+                        background-color: $white-color;
+                    }
+                    nav{
+                        height: 50px;
+                        h4{
+                            color: $red-color;
+                            font-weight: bold;
+                            font-size: $h4-sm-font-size;
+                        }
+                    }
+                    ul{
+                        li{
+                            list-style: none;
+                            a{
+                                color: $red-color;
+                                font-size: $p-sm-font-size;
+                                &:hover{
+                                    text-decoration: none;
+                                    color: $white-color;
+                                    transform: scale(1.1);
+                                    margin: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .col-lg-9{
+                padding: 0;
+                margin: 0;
+                .my-main-content{
+                    position: absolute;
+                    width: 100%;
+                    nav{
+                        height: 80px;
+                        background-color: $green-color;
+                        width: 100%;
+                        .navbar-brand{
+                            color: $red-color;
+                            font-weight: 500;
+                        }
+                        #open{
+                            background-color: $red-color;
+                            color: $white-color;
+                            margin: 5%;
+                        }
+                        .profile-info{
+                            .my-profile-pic{
+                                position: relative;
+                                width: 55px;
+                                height: 55px;
+                                margin: 0;
+                                border-radius: 50%;
+                                border: 1px solid $white-color;
+                                display: inline-block;
+                                right: 80px;
+
+                            }
+                            a{
+                                position: relative;
+                                bottom: 30px;
+                                right: 20px;
+                                .my-name{
+                                    color: $white-color;
+                                    font-weight: 250;
+                                }
+                            }
+                        }
+                    }
+                    .charts{
+                        .percentages-top{
+                            height: 90px;
+                            width: 100%;
+                            box-shadow: $box-shadow;
+                            .row{
+                                .col-xs-4{
+                                    padding: 0;
+                                    margin: 0;
+                                    .nitrogen{
+                                        position: relative;
+                                        width: 75%;
+                                        height: 55px;
+                                        top: 13px;
+                                        left: 12.5%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-sm-font-size;
+                                        }
+                                        p{
+                                            color: $red-color;
+                                            font-size: 1.5vw;
+                                            padding: 2px;
+                                        }
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: #052502;
+                                            }
+                                        }
+                                    }
+                                }
+                                .col-xs-4{
+                                    padding: 0;
+                                    margin: 0;  
+                                    .phosphorus{
+                                        position: relative;
+                                        width: 75%;
+                                        height: 55px;
+                                        top: 13px;
+                                        left: 12.5%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: rgb(15, 24, 1);
+                                            }
+                                        }
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-sm-font-size;
+                                        }
+                                        p{
+                                            color: #290529;
+                                            font-size: 1.5vw;
+                                            padding: 2px;
+                                        }
+                                    }
+                                }
+                                .col-xs-4{
+                                    padding: 0;
+                                    margin: 0; 
+                                    .potasium{
+                                        position: relative;
+                                        width: 75%;
+                                        height: 55px;
+                                        top: 13px;
+                                        left: 12.5%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: rgb(20, 34, 1);
+                                            }
+                                        }
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-sm-font-size;
+                                        }
+                                        p{
+                                            color: rgb(71, 3, 3);
+                                            font-size: 1.5vw;
+                                            padding: 2px;
+                                        }
+                                    } 
+                                }
+                                    
+                            }
+                        }
+                        .main-graphs{
+                            .row{
+                                padding: 0;
+                                .col-lg-8{
+                                    .other-components{
+                                        position: relative;
+                                        margin: 10px auto;
+                                        height: 300px;
+                                        padding: 10px;
+                                        box-shadow: $box-shadow;
+
+                                        .row{
+                                            padding: 0;
+                                            .col-lg-6{
+                                                margin: 0;
+                                                .ec-content{
+                                                    position: relative;
+                                                    width: 95%;
+                                                    height: 75px;
+                                                    top: 13px;
+                                                    left: 2.5%;
+                                                    padding: 5px;
+                                                    box-shadow: 2px 2px 5px rgb(1, 31, 5); 
+                                                    background-image: linear-gradient(to left, rgb(3, 39, 14), rgb(89, 187, 117),);
+                                                    .progress{
+                                                        .progress-bar{
+                                                            background-color: rgb(163, 168, 240);
+                                                        }
+                                                    }
+                                                    h6{
+                                                        color: $green-color;
+                                                        font-size: $p-lg-font-size;
+                                                    }
+                                                    p{
+                                                        color: rgb(238, 13, 24);
+                                                        font-size: 1vw;
+                                                        padding: 2px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .col-sm-12{
+                                    position: relative;
+                                    .mychart1{
+                                        position: relative;
+                                        width: 100%;
+                                        height: 350px;
+                                        box-shadow: $box-shadow;
+                                        .info{
+                                            h6{
+                                                font-weight: bold;
+                                                color: $green-color;
+                                            }
+                                            p{
+                                                color: $green-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }  
+    }
+}
+
+// LARGER SCREEN
+@media (min-width: 992px){
+// NAVBAR
+.mynavbar{
+    width: 100%;
+    height: 70px;
+    background-color: $green-color;
+    .container-fluid{
+        nav{
+            .navbar-brand{
+                font-size: $h1-lg-font-size;
+            }
+        }
+    }
+    #navbarNav{
+        padding: 0;
+        ul{
+            li{
+                a{
+                    font-size: $p-lg-font-size;
+                }
+            }
+        }
+    }
+}
+// HOME
+#home-section{
+    .home-image{
+        width: 100%;
+        height: 500px;
+        background-image: url("../images/tomatoes.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        .container-fluid{
+            .home-content{
+                position: relative;
+                top: 150px;
+                h1{
+                    font-size: $h1-lg-font-size;
+                }
+                .login-buttons{
+                    a{
+                        border-radius: 20px;
+                        font-size: $p-lg-font-size;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ABOUT
+#about-us{
+    .container-fluid{
+        h4{
+            font-size: $h4-lg-font-size;
+        }
+        p{
+            font-size: $p-lg-font-size;
+        }
+    }
+}
+// NOTES
+#notes{
+    h1, h3, h5{
+        font-weight: bold;
+        color: $green-color;
+        font-size: $h1-lg-font-size;
+    }
+    ul{
+        li{
+            list-style: outside;
+            p{
+                color: $green-color;
+                font-size: $p-lg-font-size;
+            }
+        }
+    }
+    p{
+        color: $green-color;
+        font-size: $p-lg-font-size;
+    }
+}
+
+// REGISTER
+.myform{
+    width: 25%;
+    position: relative;
+    left: 38%;
+    top: 150px;
+    padding: 15px;
+    border-radius: 2%;
+    form{
+        .form-group{
+            margin: 5px;
+            position: relative;
+            i{
+                position: absolute;
+                top: 25%;
+                color: $white-color;
+            }
+            p{
+                color: $white-color;
+                a{
+                    color: $red-color;
+                    font-weight: bold;
+                }
+            }
+            input[type=text], input[type=password], input[type=email]{
+                background-color: transparent;
+                border-color: $white-color;
+                color: $white-color;
+                padding-left: 20px;
+                &::placeholder{
+                    color: $white-color;
+                    opacity: 0.6;
+                }
+                &:focus{
+                    box-shadow: none;
+                    border-color: $white-color;
+                    outline: none;
+                }
+            }
+            input[type=submit]{
+                background-color: transparent;
+                color: $red-color;
+                transition: 0.5s;
+                font-weight: bold;
+                width: 45%;
+                margin: 2px auto;
+                border-radius: 0;
+                &:hover{
+                    background-color: $red-color;
+                    color: $green-color;
+                    transform: scale(1.1);
+                    border-color: $red-color;
+                }
+            }
+        }
+    }
+}
+// FOOTER
+#footer{
+    footer{
+        .container-fluid{
+            .row{
+                .col-lg-4{
+                    h4{
+                        font-size: $h4-lg-font-size;
+                    }
+                    a{
+                        font-size: $p-lg-font-size;
+                    }
+                    p{
+                        font-size: $p-lg-font-size;
+                        i{
+                            font-size: $p-lg-font-size;
+                        }
+                    }
+                    form{
+                        input[type=email]{
+                            background-color: transparent;
+                            border-color: $red-color;
+                            color: $white-color;
+                            &::placeholder{
+                                color: $white-color;
+                            }
+                            &:focus{
+                                outline: none;
+                                border-color: $red-color;
+                                box-shadow: none;
+                            }
+                        }
+                        input[type=submit]{
+                            background-color: $red-color;
+                            color: $white-color;
+                            border: $red-color;
+                            transition: 0.5s;
+                            &:hover{
+                                border-color: $red-color;
+                                outline: none;
+                                color: $green-color;
+                                box-shadow: 2px 2px 5px $red-color;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// REGISTER
+// DASHBOARD
+.mydashboard{
+    .container-fluid{
+        .row{
+            .col-lg-3{
+                padding: 0;
+                margin: 0;
+                .my-sidebar{
+                    width: 100%;
+                    height: 1170px;
+                    margin: 0;
+                    padding: 15px;
+                    background-color: $green-color;
+                    hr{
+                        background-color: $white-color;
+                    }
+                    nav{
+                        height: 50px;
+                        h4{
+                            color: $white-color;
+                            font-weight: bold;
+                            font-size: $h4-lg-font-size;
+                        }
+                    }
+                    ul{
+                        li{
+                            list-style: none;
+                            a{
+                                color: $white-color;
+                                font-size: $p-lg-font-size;
+                            }
+                        }
+                    }
+                }
+            }
+            .col-lg-9{
+                padding: 0;
+                margin: 0;
+                .my-main-content{
+                    width: 100%;
+                    nav{
+                        height: 80px;
+                        background-color: $green-color;
+                        width: 100%;
+                        .navbar-brand{
+                            color: white;
+                            font-weight: 500;
+                        }
+                        #open{
+                            background-color: $red-color;
+                            color: $white-color;
+                            margin: 5%;
+                        }
+                        .profile-info{
+                            .my-profile-pic{
+                                position: relative;
+                                width: 55px;
+                                height: 55px;
+                                margin: 0;
+                                border-radius: 50%;
+                                border: 1px solid $white-color;
+                                display: inline-block;
+                                right: 80px;
+
+                            }
+                            a{
+                                position: relative;
+                                bottom: 30px;
+                                right: 20px;
+                                .my-name{
+                                    color: $white-color;
+                                    font-weight: 250;
+                                }
+                            }
+                        }
+                    }
+                    .charts{
+                        .percentages-top{
+                            height: 100px;
+                            width: 100%;
+                            box-shadow: $box-shadow;
+                            .row{
+                                .col-lg-4{
+                                    padding: 0;
+                                    margin: 0;
+                                    .nitrogen{
+                                        position: relative;
+                                        width: 80%;
+                                        height: 75px;
+                                        top: 13px;
+                                        left: 10%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-lg-font-size;
+                                        }
+                                        p{
+                                            color: $red-color;
+                                            font-size: 1.2vw;
+                                            padding: 2px;
+                                        }
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: #052502;
+                                            }
+                                        }
+                                    }
+                                    .phosphorus{
+                                        position: relative;
+                                        width: 80%;
+                                        height: 75px;
+                                        top: 13px;
+                                        left: 10%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: rgb(15, 24, 1);
+                                            }
+                                        }
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-lg-font-size;
+                                        }
+                                        p{
+                                            color: #290529;
+                                            font-size: 1.2vw;
+                                            padding: 2px;
+                                        }
+                                    }
+                                    .potasium{
+                                        position: relative;
+                                        width: 80%;
+                                        height: 75px;
+                                        top: 13px;
+                                        left: 10%;
+                                        padding: 5px;
+                                        box-shadow: 2px 2px 5px rgb(1, 31, 1);
+                                        background-image: linear-gradient(to top left, #032202, rgb(253, 8, 8));
+                                        .progress{
+                                            .progress-bar{
+                                                background-color: rgb(20, 34, 1);
+                                            }
+                                        }
+                                        h6{
+                                            color: $green-color;
+                                            font-size: $p-lg-font-size;
+                                        }
+                                        p{
+                                            color: rgb(71, 3, 3);
+                                            font-size: 1.2vw;
+                                            padding: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .main-graphs{
+                            .row{
+                                padding: 0;
+                                .col-lg-8{
+                                    .other-components{
+                                        position: relative;
+                                        margin: 10px auto;
+                                        height: 300px;
+                                        padding: 10px;
+                                        box-shadow: $box-shadow;
+
+                                        .row{
+                                            padding: 0;
+                                            .col-lg-6{
+                                                margin: 0;
+                                                .ec-content{
+                                                    position: relative;
+                                                    width: 95%;
+                                                    height: 75px;
+                                                    top: 13px;
+                                                    left: 2.5%;
+                                                    padding: 5px;
+                                                    box-shadow: 2px 2px 5px rgb(1, 31, 5); 
+                                                    background-image: linear-gradient(to left, rgb(3, 39, 14), rgb(89, 187, 117),);
+                                                    .progress{
+                                                        .progress-bar{
+                                                            background-color: rgb(163, 168, 240);
+                                                        }
+                                                    }
+                                                    h6{
+                                                        color: $green-color;
+                                                        font-size: $p-lg-font-size;
+                                                    }
+                                                    p{
+                                                        color: rgb(238, 13, 24);
+                                                        font-size: 1vw;
+                                                        padding: 2px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .col-lg-4{
+                                    position: relative;
+                                    .mychart1{
+                                        position: relative;
+                                        width: 100%;
+                                        height: 300px;
+                                        box-shadow: $box-shadow;
+                                        .info{
+                                            h6{
+                                                font-weight: bold;
+                                                color: $green-color;
+                                            }
+                                            p{
+                                                color: $green-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }  
+    }
+}
+}
+
+@media (max-width: 575px) {
+    .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, 
+    .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .col-xs-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .col-xs-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-xs-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-xs-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-xs-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-xs-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-xs-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-xs-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-xs-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-xs-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-xs-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-xs-12 { flex: 0 0 100%; max-width: 100%; }
+  }

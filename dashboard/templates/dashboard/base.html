@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'dashboard/css/index.css' %}">
+</head>
+<body>
+    <div class="mynavbar">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{% url 'home' %}#home-section">AgriTrack</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}#about-us">About</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+    <section id="footer">
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <h4>Links</h4>
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'home' %}#about-us">About Us</a>
+                        <a href="{% url 'notes' %}">Notes</a>
+                        <a href="{% url 'register' %}">Sign In</a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <h4>Get in touch</h4>
+                        <p><i class="fa fa-phone">: </i> +263778816360</p>
+                        <p><i class="fa fa-envelope">: </i> ntshuma959@gmail.com</p>
+                        <p><i class='fa fa-map-marker'>: </i> 4A Bouchier Wray Ave, Hillside, Bulawayo</p>
+                        <p><i class="fa fa-whatsapp">: </i> +263714268634</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-3">
+                        <h4>Subscribe for News letter</h4>
+                        <form action="">
+                            <input type="email" name="subscription-form" placeholder="examplename@gmail.com" class="form-control">
+                            <input type="submit" value="Subscribe" class="form-control mt-2">
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block scripts %} {% endblock %}
+</body>
+</html>
