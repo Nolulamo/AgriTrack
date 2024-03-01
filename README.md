@@ -10,8 +10,6 @@ To utilize AgriTrack, farmers will eventually need to purchase the hardware kit 
 Currently, AgriTrack is still in progress, and the hardware kit is not yet available for purchase. The development team is actively working on finalizing the hardware design and ensuring its compatibility with the system. We anticipate that the hardware kit will be released in the near future, allowing farmers to fully experience the benefits of AgriTrack.
 
 Once the hardware is available, farmers will be able to connect to the web app, which provides a secure data transmission and guarantees privacy. The web app features a user-friendly interface that enables farmers to monitor essential soil fertility parameters, including nutrient levels, pH balance, and moisture content. Furthermore, the system will provide recommendations and alerts based on data analysis and historical trends, empowering farmers to make informed decisions and optimize their farming practices.
-## Contiributing
-Certainly! Here's an example of how you can add a contribution section to your README file for a Django backend project:
 
 ## Contributing
 
