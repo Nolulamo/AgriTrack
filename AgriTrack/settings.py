@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-g-jh)lzrzvvgp+9dhvmstlxycpe_2jbpgu4&9$zw7*ovq4v#b_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-nolulamo-agritrack-eza98cqg8se.ws-eu108.gitpod.io']
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-nolulamo-agritrack-eza98cqg8se.ws-eu108.gitpod.io']
 
 
 # Application definition
