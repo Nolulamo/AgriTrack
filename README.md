@@ -21,14 +21,8 @@ To contribute to the project, please follow the steps below:
    ```
    git clone https://github.com/Nolulamo/AgriTrack.git
    ```
-
-3. Navigate to the project's directory:
-
-   ```
-   cd AgriTrack
-   ```
-
-4. Create a virtual environment to isolate the dependencies for the project. Run the following command based on your operating system:
+   
+3. Create a virtual environment to isolate the dependencies for the project. Run the following command based on your operating system:
 
    - For Windows:
 
@@ -42,7 +36,7 @@ To contribute to the project, please follow the steps below:
      python3 -m venv env
      ```
 
-5. Activate the virtual environment:
+4. Activate the virtual environment:
 
    - For Windows (Command Prompt):
 
@@ -62,19 +56,19 @@ To contribute to the project, please follow the steps below:
      source env/bin/activate
      ```
 
-6. Install the project dependencies:
+5. Install the project dependencies:
 
    ```
    pip install -r requirements.txt
    ```
 
-7. Apply the database migrations:
+6. Apply the database migrations:
 
    ```
    python manage.py migrate
    ```
 
-8. Start the development server:
+7. Start the development server:
 
    ```
    python manage.py runserver
@@ -82,11 +76,11 @@ To contribute to the project, please follow the steps below:
 
    The server should now be running locally at `http://localhost:8000/`.
 
-9. Make the necessary changes or improvements to the codebase.
-10. Test your modifications thoroughly to ensure they do not introduce any issues.
-11. Commit your changes and push them to your forked repository.
-12. Create a pull request by navigating to the original repository and clicking on the "New Pull Request" button.
-13. Clearly describe the changes you have made and their purpose in the pull request. Provide any additional information or context that may be helpful.
-14. Submit the pull request, and our team will review your contribution as soon as possible.
+8. Make the necessary changes or improvements to the codebase.
+9. Test your modifications thoroughly to ensure they do not introduce any issues.
+10. Commit your changes and push them to your forked repository.
+11. Create a pull request by navigating to the original repository and clicking on the "New Pull Request" button.
+12. Clearly describe the changes you have made and their purpose in the pull request. Provide any additional information or context that may be helpful.
+13. Submit the pull request, and our team will review your contribution as soon as possible.
 
 We appreciate your interest in contributing to AgriTrack!
